@@ -9,7 +9,6 @@ public class Main {
         StartPage startPage = initializeDriver();
         LoginPage loginPage = startPage.goToLogin();
         UserHomePage userHomePage = loginPage.login("rftester","rftester");
-        int uselessVariable = 42;
     }
 
 

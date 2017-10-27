@@ -16,9 +16,18 @@ public class LoginPage extends Page {
     @FindBy(id="login")
     WebElement btnLogin;
 
+    @FindBy(id="error")
+    WebElement divError;
+
     public LoginPage(WebDriver givenDriver){
         super(givenDriver);
         assertTrue(inputUser.isDisplayed());
+    }
+
+    public LoginPage failLogin(String user, String password){
+        this.login(user, password);
+        assertTrue(divError.isDisplayed());
+        return this;
     }
 
     public UserHomePage login(String user, String password){

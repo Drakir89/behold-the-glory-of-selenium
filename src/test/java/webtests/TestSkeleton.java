@@ -12,11 +12,11 @@ public class TestSkeleton {
 
     @BeforeClass
     public void initializeDriver(){
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterClass
+    @AfterClass()
     public void closeDriver(){
         driver.manage().deleteAllCookies();
         driver.close();

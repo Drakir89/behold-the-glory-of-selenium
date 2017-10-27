@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.testng.Assert.assertTrue;
 
 public class LoginPage extends Page {
-    @FindBy(id="user")
+    @FindBy(id = "user")
     WebElement inputUser;
 
     @FindBy(id="password")
@@ -24,10 +24,9 @@ public class LoginPage extends Page {
         assertTrue(inputUser.isDisplayed());
     }
 
-    public LoginPage failLogin(String user, String password){
+    public void failLogin(String user, String password){
         this.login(user, password);
         assertTrue(divError.isDisplayed());
-        return this;
     }
 
     public UserHomePage login(String user, String password){

@@ -1,12 +1,13 @@
 package webtests;
 
+import data.LoginData;
 import pageobjects.*;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class TestLogin extends TestSkeleton {
 
-    String START_ADDRESS = "https://trello.com/";
+    final String START_ADDRESS = "https://trello.com/";
 
     StartPage startPage;
     LoginPage loginPage;
@@ -22,13 +23,15 @@ public class TestLogin extends TestSkeleton {
 
     @Test (dependsOnMethods = {"goToLogin"})
     public void failLogin(){
-        loginPage.failLogin("badname","badpass");
+        LoginData badUser = data.getBadLogin();
+        loginPage.failLogin(badUser.getUser(),badUser.getPass());
         assertTrue(loginPage.errorDisplayed());
     }
 
     @Test(dependsOnMethods = {"failLogin"})
     public void login(){
-        userHomePage = loginPage.login("rftester@mailinator.com", "rftester");
+        LoginData user1 = data.getLogin1();
+        userHomePage = loginPage.login(user1.getUser(), user1.getPass());
         loginPage = null;
     }
 

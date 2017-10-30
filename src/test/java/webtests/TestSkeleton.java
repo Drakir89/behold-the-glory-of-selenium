@@ -1,6 +1,6 @@
 package webtests;
 
-import data.TestData;
+import data.DataProvider;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -10,13 +10,13 @@ import java.util.concurrent.TimeUnit;
 
 public class TestSkeleton {
     protected WebDriver driver;
-    protected TestData data;
+    protected DataProvider data;
 
     @BeforeClass
     public void initializeDriver(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        data = new TestData();
+        data = new DataProvider();
     }
 
     @AfterClass()

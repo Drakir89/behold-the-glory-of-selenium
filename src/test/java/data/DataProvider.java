@@ -1,6 +1,6 @@
 package data;
 
-public class TestData {
+public class DataProvider {
     public LoginData getLogin1() {
         return login1;
     }

@@ -26,7 +26,10 @@ public class LoginPage extends Page {
 
     public void failLogin(String user, String password){
         this.login(user, password);
-        assertTrue(divError.isDisplayed());
+    }
+
+    public boolean errorDisplayed(){
+        return divError.isDisplayed();
     }
 
     public UserHomePage login(String user, String password){

@@ -27,7 +27,7 @@ public class UserHeader extends Page{
         wait.until(ExpectedConditions.elementToBeClickable(linkLogout));
     }
 
-    public LoggedOutPage logout(){
+    public LoggedOutPage logoutFromMemberMenu(){
         linkLogout.click();
         return new LoggedOutPage(driver);
     }

@@ -18,6 +18,10 @@ public class UserHomePage extends Page{
         header = new UserHeader(driver);
     }
 
+    public UserHeader getHeader() {
+        return header;
+    }
+
     public boolean boardsDisplayed(){
         return divBoardsPage.isDisplayed();
     }

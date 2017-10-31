@@ -8,17 +8,15 @@ import static org.testng.Assert.assertTrue;
 
 
 public class StartPage extends Page{
-    @FindBy(linkText="Logga in")
-    WebElement btnLogin;
+    GlobalHeader header;
 
     public StartPage(WebDriver givenDriver){
         super(givenDriver);
-        assertTrue(btnLogin.isDisplayed());
+        header = new GlobalHeader(givenDriver);
+        //add assert for page load, when class is more fleshed out
     }
 
-    public LoginPage goToLogin(){
-        btnLogin.click();
-        return new LoginPage(driver);
+    public GlobalHeader getHeader() {
+        return header;
     }
-
 }

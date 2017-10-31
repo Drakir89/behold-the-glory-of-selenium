@@ -12,12 +12,13 @@ public class TestLogin extends TestSkeleton {
     StartPage startPage;
     LoginPage loginPage;
     UserHomePage userHomePage;
+    LoggedOutPage loggedOutPage;
 
     @Test
     public void goToLogin(){
         driver.get(START_ADDRESS);
         startPage = new StartPage(driver);
-        loginPage = startPage.goToLogin();
+        loginPage = startPage.getHeader().goToLogin();
         startPage = null;
     }
 
@@ -47,9 +48,14 @@ public class TestLogin extends TestSkeleton {
         assertTrue(userHomePage.boardsDisplayed());
     }
 
-    @Test(enabled = false, dependsOnMethods = {"revisitStartPageWhenLoggedIn"})
+    @Test(dependsOnMethods = {"revisitStartPageWhenLoggedIn"})
     public void logoutFromUserHomePage(){
-
+        userHomePage.getHeader().openMemberMenu();
+        loggedOutPage = userHomePage.getHeader().logoutFromMemberMenu();
     }
+
+
+
+
 
 }

@@ -26,33 +26,27 @@ public class LoginPage extends Page {
         assertTrue(inputUser.isDisplayed());
     }
 
-    //internal login method to avoid code duplication
-    private void attemptLogin(String user, String password){
+    public void enterUser(String givenUser){
         inputUser.clear();
-        inputPassword.clear();
+        inputUser.sendKeys(givenUser);
+    }
 
-        inputUser.sendKeys(user);
-        inputPassword.sendKeys(password);
+    public void enterPassword(String givenPass){
+        inputPassword.clear();
+        inputPassword.sendKeys(givenPass);
+    }
+
+    public void submitWrongly(){
         btnLogin.click();
     }
 
-    public void failLogin(String givenUser, String givenPass){
-        attemptLogin(givenUser, givenPass);
+    public UserHomePage submitCorrectly(){
+        btnLogin.click();
+        return new UserHomePage(driver);
     }
 
-    //has a small wait to give the browser time to show the error
-    public boolean errorDisplayed(){
+    public void expectErrorMessage(){
         WebDriverWait wait = new WebDriverWait(driver, 1);
         wait.until(ExpectedConditions.elementToBeClickable(divError));
-        return divError.isDisplayed();
-    }
-
-    public String getErrorText(){
-        return divError.getText();
-    }
-
-    public UserHomePage login(String givenUser, String givenPass){
-        attemptLogin(givenUser, givenPass);
-        return new UserHomePage(driver);
     }
 }

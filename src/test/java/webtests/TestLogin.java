@@ -24,14 +24,20 @@ public class TestLogin extends TestSkeleton {
     @Test (dependsOnMethods = {"goToLogin"})
     public void failLogin(){
         LoginData badUser = data.getBadLogin();
-        loginPage.failLogin(badUser.getUser(),badUser.getPass());
-        assertTrue(loginPage.errorDisplayed());
+        loginPage.enterUser(badUser.getUser());
+        loginPage.enterPassword(badUser.getPass());
+
+        loginPage.submitWrongly();
+        loginPage.expectErrorMessage();
     }
 
     @Test(dependsOnMethods = {"failLogin"})
     public void login(){
         LoginData user1 = data.getLogin1();
-        userHomePage = loginPage.login(user1.getUser(), user1.getPass());
+        loginPage.enterUser(user1.getUser());
+        loginPage.enterPassword(user1.getPass());
+
+        userHomePage = loginPage.submitCorrectly();
         loginPage = null;
     }
 

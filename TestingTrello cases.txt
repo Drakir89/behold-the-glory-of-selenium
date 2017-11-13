@@ -1,0 +1,7 @@
+login unsuccessfully
+login successfully
+revisit start page without logging out
+log out
+->revisit start page after logging out
+login unsuccessfully after logging out
+revisit start page after logging out and deleting cookies
